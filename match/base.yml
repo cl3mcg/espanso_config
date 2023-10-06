@@ -1,0 +1,135 @@
+# espanso match file
+
+# For a complete introduction, visit the official docs at: https://espanso.org/docs/
+
+# You can use this file to define the base matches (aka snippets)
+# that will be available in every application when using espanso.
+
+# Matches are substitution rules: when you type the "trigger" string
+# it gets replaced by the "replace" string.
+matches:
+  # Simple text replacement
+  - trigger: ":espanso"
+    replace: "Hi there!"
+
+  # Provide unicode arrows based on VIM hjkl commands
+  - trigger: "::hh"
+    replace: "←"
+
+  - trigger: "::ll"
+    replace: "→"
+
+  - trigger: "::jj"
+    replace: "↓"
+
+  - trigger: "::kk"
+    replace: "↑"
+
+  # Provide currency symbols
+  - trigger: "::eur"
+    replace: "€"
+
+  - trigger: "::gbp"
+    replace: "£"
+
+  - trigger: "::usd"
+    replace: "$"
+
+  - trigger: "::jpy"
+    replace: "¥"
+
+  - trigger: "::cny"
+    replace: "元"
+
+  - trigger: "::rmb"
+    replace: "元"
+
+  - trigger: "::krw"
+    replace: "₩"
+
+  - trigger: "::inr"
+    replace: "₹"
+
+  - trigger: "::rub"
+    replace: "₽"
+
+  - trigger: "::thb"
+    replace: "฿"
+
+  - trigger: "::btc"
+    replace: "฿"
+
+  - trigger: "::eth"
+    replace: "Ξ"
+
+  # NOTE: espanso uses YAML to define matches, so pay attention to the indentation!
+
+  # But matches can also be dynamic:
+
+  # Print the current date
+  - trigger: "::date"
+    replace: "{{mydate}}"
+    label: "Insert today's date such as 05-Jan-2022"
+    vars:
+      - name: mydate
+        type: date
+        params:
+          format: "%d-%b-%Y"
+
+  # Print the output of a shell command
+  - trigger: "::shell"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "echo 'Hello from your shell'"
+
+  # And much more! For more information, visit the docs: https://espanso.org/docs/
+  # Custom commands created for Clément
+  # Print my full name
+  - trigger: "::name"
+    replace: "Clément CHAÏB-GALLI"
+    label: "Provide the full name with acccents"
+
+  # Print "Hello Pro." greetings for email communications
+  - trigger: "::hp"
+    replace: "Hello, I am Clément from Rhenus Air & Ocean Tender management team, based in Hilden, Germany. I hope this message finds you well.\nI am contacting you because "
+    label: "Provide a professional introduction for email communications"
+
+  # Provide a list of greetings for email communications
+  - trigger: "::th"
+    replace: "{{greetingsList.greetings}}"
+    vars:
+      - name: "greetingsList"
+        type: form
+        params:
+          layout: "[[greetings]]"
+          fields:
+            greetings:
+              type: list
+              default: "Thank you.\nSincerely,"
+              values:
+                - "Thank you.\nSincerely,"
+                - "Thank you.\nHave a nice day,"
+                - "Thank you.\nHave a nice weekend,"
+                - "Cordialement,"
+
+  # Provide accentuated letters for French
+  - trigger: "::acc"
+    replace: "{{accentList.accent}}"
+    vars:
+      - name: "accentList"
+        type: form
+        params:
+          layout: "[[accent]]"
+          fields:
+            accent:
+              type: list
+              default: é
+              values:
+                - é
+                - è
+                - à
+                - ù
+                - ç
