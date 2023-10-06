@@ -57,7 +57,7 @@ matches:
     replace: "฿"
 
   - trigger: "::btc"
-    replace: "฿"
+    replace: "₿"
 
   - trigger: "::eth"
     replace: "Ξ"
