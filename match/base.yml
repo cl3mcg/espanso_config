@@ -11,63 +11,101 @@ matches:
   # Simple text replacement
   - trigger: ":espanso"
     replace: "Hi there!"
+  # NOTE: espanso uses YAML to define matches, so pay attention to the indentation!
 
   # Provide unicode arrows based on VIM hjkl commands
-  - trigger: "::hh"
+  - trigger: ":.hh"
     replace: "←"
 
-  - trigger: "::ll"
+  - trigger: ":.ll"
     replace: "→"
 
-  - trigger: "::jj"
+  - trigger: ":.jj"
     replace: "↓"
 
-  - trigger: "::kk"
+  - trigger: ":.kk"
     replace: "↑"
 
   # Provide currency symbols
-  - trigger: "::eur"
+  - trigger: ":.eur"
     replace: "€"
 
-  - trigger: "::gbp"
+  - trigger: ":.gbp"
     replace: "£"
 
-  - trigger: "::usd"
+  - trigger: ":.usd"
     replace: "$"
 
-  - trigger: "::jpy"
+  - trigger: ":.jpy"
     replace: "¥"
 
-  - trigger: "::cny"
+  - trigger: ":.cny"
     replace: "元"
 
-  - trigger: "::rmb"
+  - trigger: ":.rmb"
     replace: "元"
 
-  - trigger: "::krw"
+  - trigger: ":.krw"
     replace: "₩"
 
-  - trigger: "::inr"
+  - trigger: ":.inr"
     replace: "₹"
 
-  - trigger: "::rub"
+  - trigger: ":.rub"
     replace: "₽"
 
-  - trigger: "::thb"
+  - trigger: ":.thb"
     replace: "฿"
 
-  - trigger: "::btc"
+  - trigger: ":.btc"
     replace: "₿"
 
-  - trigger: "::eth"
+  - trigger: ":.eth"
     replace: "Ξ"
 
-  # NOTE: espanso uses YAML to define matches, so pay attention to the indentation!
+  # Provide emoji color dots such as 🔴, 🟠, 🟡, 🟢 etc.
+
+  - trigger: ":.red"
+    replace: "\U0001F534"
+
+  - trigger: ":.orange"
+    replace: "\U0001F7E0"
+
+  - trigger: ":.yellow"
+    replace: "\U0001F7E1"
+
+  - trigger: ":.green"
+    replace: "\U0001F7E2"
+
+  - trigger: ":.blue"
+    replace: "\U0001F535"
+
+  - triggers: [":.violet", ":.purple"]
+    replace: "\U0001F7E3"
+
+  - triggers: [":.brown", ":.maroon", ":.marron"]
+    replace: "\U0001F7E4"
+
+  - trigger: ":.black"
+    replace: "\U000026AB"
+
+  - trigger: ":.white"
+    replace: "\U000026AA"
+
+  # Provide emoji status
+
+  - triggers: [":.warn", ":.warning"]
+    replace: "⚠️"
+
+  - trigger: ":.check"
+    replace: "✔️"
+
+  - trigger: ":.cross"
+    replace: "❌"
 
   # But matches can also be dynamic:
-
   # Print the current date
-  - trigger: "::date"
+  - trigger: ":.date"
     replace: "{{mydate}}"
     label: "Insert today's date such as 05-Jan-2022"
     vars:
@@ -77,7 +115,7 @@ matches:
           format: "%d-%b-%Y"
 
   # Print the output of a shell command
-  - trigger: "::shell"
+  - trigger: ":.shell"
     replace: "{{output}}"
     vars:
       - name: output
@@ -88,17 +126,27 @@ matches:
   # And much more! For more information, visit the docs: https://espanso.org/docs/
   # Custom commands created for Clément
   # Print my full name
-  - trigger: "::name"
+  - trigger: ":.name"
     replace: "Clément CHAÏB-GALLI"
     label: "Provide the full name with acccents"
 
   # Print "Hello Pro." greetings for email communications
-  - trigger: "::hp"
+  - trigger: ":.hp"
     replace: "Hello, I am Clément from Rhenus Air & Ocean Tender management team, based in Hilden, Germany. I hope this message finds you well.\nI am contacting you because "
     label: "Provide a professional introduction for email communications"
 
+  # Print "Hello Simple" greetings for email communications
+  - trigger: ":.hs"
+    replace: "Hello, I hope this message finds you well.\nI am contacting you because "
+    label: "Provide a simple introduction for email communications"
+
+  # Print "Hello Simple" greetings for email communications
+  - trigger: ":.hm"
+    replace: "Hello,\nI am contacting you because "
+    label: "Provide a simple introduction for email communications"
+
   # Provide a list of greetings for email communications
-  - trigger: "::th"
+  - trigger: ":.th"
     replace: "{{greetingsList.greetings}}"
     vars:
       - name: "greetingsList"
@@ -116,7 +164,7 @@ matches:
                 - "Cordialement,"
 
   # Provide accentuated letters for French
-  - trigger: "::acc"
+  - trigger: ":.acc"
     replace: "{{accentList.accent}}"
     vars:
       - name: "accentList"
