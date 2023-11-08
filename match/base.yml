@@ -14,98 +14,173 @@ matches:
   # NOTE: espanso uses YAML to define matches, so pay attention to the indentation!
 
   # Provide unicode arrows based on VIM hjkl commands
-  - trigger: ":.hh"
+  - triggers: ["hh\t", "::hh"]
+    label: "Provide a left-pointing arrow"
     replace: "←"
 
-  - trigger: ":.ll"
+  - triggers: ["ll\t", "::ll"]
+    label: "Provide a right-pointing arrow"
     replace: "→"
 
-  - trigger: ":.jj"
+  - triggers: ["jj\t", "::jj"]
+    label: "Provide a down-pointing arrow"
     replace: "↓"
 
-  - trigger: ":.kk"
+  - triggers: ["kk\t", "::kk"]
+    label: "Provide an up-pointing arrow"
     replace: "↑"
 
+  - triggers: ["hl\t", "::hl"]
+    label: "Provide a left & right pointing arrow"
+    replace: "⟷"
+
+  # Provide inequality signs
+  - triggers: ["diff\t", "::diff", "inqu\t", "::inqu"]
+    label: "Provide an inequality math sign"
+    replace: "≠"
+
+  # Provide bullets and dashes
+  - trigger: "dash\t"
+    label: "Provide a dash bullet, followed by a tab"
+    replace: "—\t"
+
+  - trigger: "::dash"
+    label: "Provide a dash bullet"
+    replace: "—"
+
+  - trigger: "bull\t"
+    label: "Provide a dot bullet, followed by a tab"
+    replace: "•\t"
+
+  - trigger: "::bull"
+    label: "Provide a dot bullet"
+    replace: "•"
+
+  - trigger: "rbul\t"
+    label: "Provide a right pointing triangle bullet, followed by a tab"
+    replace: "▶\t"
+
+  - trigger: "::rbul"
+    label: "Provide a right pointing triangle bullet"
+    replace: "▶"
+
+  - trigger: "lbul\t"
+    label: "Provide a left pointing triangle bullet, followed by a tab"
+    replace: "\t◀"
+
+  - trigger: "::lbul"
+    label: "Provide a left pointing triangle bullet"
+    replace: "◀"
+
   # Provide currency symbols
-  - trigger: ":.eur"
+  - triggers: ["eur\t", "::eur"]
+    label: "Provide the EUR currency sign"
     replace: "€"
 
-  - trigger: ":.gbp"
+  - triggers: ["gbp\t", "::gbp"]
+    label: "Provide the GBP/pound currency sign"
     replace: "£"
 
-  - trigger: ":.usd"
+  - triggers: ["usd\t", "::usd"]
+    label: "Provide the USD/dollar currency sign"
     replace: "$"
 
-  - trigger: ":.jpy"
+  - triggers: ["jpy\t", "::jpy"]
+    label: "Provide the JYP currency sign"
     replace: "¥"
 
-  - trigger: ":.cny"
+  - triggers: ["rmb\t", "::rmb", "cny\t", "::cny"]
+    label: "Provide the CNY currency sign"
     replace: "元"
 
-  - trigger: ":.rmb"
-    replace: "元"
-
-  - trigger: ":.krw"
+  - triggers: ["krw\t", "::krw"]
+    label: "Provide the KRW currency sign"
     replace: "₩"
 
-  - trigger: ":.inr"
+  - triggers: ["inr\t", "::inr"]
+    label: "Provide the INR currency sign"
     replace: "₹"
 
-  - trigger: ":.rub"
+  - triggers: ["rub\t", "::rub"]
+    label: "Provide the RUB currency sign"
     replace: "₽"
 
-  - trigger: ":.thb"
+  - triggers: ["thb\t", "::thb"]
+    label: "Provide the THB currency sign"
     replace: "฿"
 
-  - trigger: ":.btc"
+  - triggers: ["btc\t", "::btc"]
+    label: "Provide the Bitcoin currency sign"
     replace: "₿"
 
-  - trigger: ":.eth"
+  - triggers: ["eth\t", "::eth"]
+    label: "Provide the Ethereum currency sign"
     replace: "Ξ"
 
   # Provide emoji color dots such as 🔴, 🟠, 🟡, 🟢 etc.
 
-  - trigger: ":.red"
+  - triggers: ["red\t", "::red"]
+    label: "Provide a 'red dot' emoji"
     replace: "\U0001F534"
 
-  - trigger: ":.orange"
+  - triggers: ["orange\t", "::orange"]
+    label: "Provide a 'orange dot' emoji"
     replace: "\U0001F7E0"
 
-  - trigger: ":.yellow"
+  - triggers: ["yellow\t", "::yellow"]
+    label: "Provide a 'yellow dot' emoji"
     replace: "\U0001F7E1"
 
-  - trigger: ":.green"
+  - triggers: ["green\t", "::green"]
+    label: "Provide a 'green dot' emoji"
     replace: "\U0001F7E2"
 
-  - trigger: ":.blue"
+  - triggers: ["blue\t", "::blue"]
+    label: "Provide a 'blue dot' emoji"
     replace: "\U0001F535"
 
-  - triggers: [":.violet", ":.purple"]
+  - triggers: ["violet\t", "::violet", "purple\t", "::purple"]
+    label: "Provide a 'purple dot' emoji"
     replace: "\U0001F7E3"
 
-  - triggers: [":.brown", ":.maroon", ":.marron"]
+  - triggers:
+      ["brown\t", "::brown", "maroon\t", "::maroon", "marron\t", "::marron"]
+    label: "Provide a 'brown dot' emoji"
     replace: "\U0001F7E4"
 
-  - trigger: ":.black"
+  - triggers: ["black\t", "::black"]
+    label: "Provide a 'black dot' emoji"
     replace: "\U000026AB"
 
-  - trigger: ":.white"
+  - triggers: ["white\t", "::white"]
+    label: "Provide a 'white dot' emoji"
     replace: "\U000026AA"
 
   # Provide emoji status
 
-  - triggers: [":.warn", ":.warning"]
-    replace: "⚠️"
+  - triggers: ["warn\t", "::warn", "warning\t", "::warning"]
+    label: "Provide a 'triangular warning sign' emoji"
+    replace: "⚠"
 
-  - trigger: ":.check"
+  - triggers: ["check\t", "::check"]
+    label: "Provide a 'positive green check' emoji"
     replace: "✔️"
 
-  - trigger: ":.cross"
+  - triggers: ["cross\t", "::cross"]
+    label: "Provide a 'negative red cross' emoji"
     replace: "❌"
+
+  - triggers: ["thup\t", "::thup"]
+    label: "Provide a 'thumb up' emoji"
+    replace: "👍"
+
+  - triggers: ["thdw\t", "::thdw"]
+    label: "Provide a 'thumb down' emoji"
+    replace: "👎"
 
   # But matches can also be dynamic:
   # Print the current date
-  - trigger: ":.date"
+  - triggers: ["date\t", "::date"]
     replace: "{{mydate}}"
     label: "Insert today's date such as 05-Jan-2022"
     vars:
@@ -115,7 +190,7 @@ matches:
           format: "%d-%b-%Y"
 
   # Print the output of a shell command
-  - trigger: ":.shell"
+  - triggers: ["shell\t", "::shell"]
     replace: "{{output}}"
     vars:
       - name: output
@@ -126,27 +201,33 @@ matches:
   # And much more! For more information, visit the docs: https://espanso.org/docs/
   # Custom commands created for Clément
   # Print my full name
-  - trigger: ":.name"
+  - triggers: ["name\t", "::name"]
     replace: "Clément CHAÏB-GALLI"
     label: "Provide the full name with acccents"
 
   # Print "Hello Pro." greetings for email communications
-  - trigger: ":.hp"
-    replace: "Hello, I am Clément from Rhenus Air & Ocean Tender management team, based in Hilden, Germany. I hope this message finds you well.\nI am contacting you because "
+  - triggers: ["hp\t", "::hp"]
+    replace: "Hello,\nI am Clément from Rhenus Air & Ocean Tender management team, based in Hilden, Germany. I hope this message finds you well.\nI am contacting you because "
     label: "Provide a professional introduction for email communications"
 
   # Print "Hello Simple" greetings for email communications
-  - trigger: ":.hs"
-    replace: "Hello, I hope this message finds you well.\nI am contacting you because "
+  - triggers: ["hs\t", "::hs"]
+    replace: "Hello,\nI hope this message finds you well.\nI am contacting you because "
     label: "Provide a simple introduction for email communications"
 
   # Print "Hello Simple" greetings for email communications
-  - trigger: ":.hm"
+  - triggers: ["hm\t", "::hm"]
     replace: "Hello,\nI am contacting you because "
-    label: "Provide a simple introduction for email communications"
+    label: "Provide a minimalistic introduction for email communications"
+
+  # Print "Hello Thank you" greetings for email communications
+  - triggers: ["ht\t", "::ht"]
+    replace: "Hello,\nThank you for your message, "
+    label: "Provide a 'thank you for your message' for email communications"
 
   # Provide a list of greetings for email communications
-  - trigger: ":.th"
+  - triggers: ["th\t", "::th"]
+    label: "Provide ending salutations for email communications"
     replace: "{{greetingsList.greetings}}"
     vars:
       - name: "greetingsList"
@@ -164,7 +245,8 @@ matches:
                 - "Cordialement,"
 
   # Provide accentuated letters for French
-  - trigger: ":.acc"
+  - triggers: ["acc\t", "::acc"]
+    label: "Provide a list of French accents"
     replace: "{{accentList.accent}}"
     vars:
       - name: "accentList"
@@ -181,3 +263,4 @@ matches:
                 - à
                 - ù
                 - ç
+                - ï
