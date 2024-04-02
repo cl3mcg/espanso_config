@@ -34,10 +34,26 @@ matches:
     label: "Provide a left & right pointing arrow"
     replace: "⟷"
 
-  # Provide inequality signs
+  # Provide specific signs
   - triggers: ["diff\t", "::diff", "inqu\t", "::inqu"]
     label: "Provide an inequality math sign"
     replace: "≠"
+
+  - triggers: ["alpha\t", "::alpha"]
+    label: "Provide a '𝛂' (alpha) greek sign"
+    replace: "𝛂"
+
+  - triggers: ["beta\t", "::beta"]
+    label: "Provide a '𝛃' (beta) greek sign"
+    replace: "𝛃"
+
+  - triggers: ["delta\t", "::delta"]
+    label: "Provide a '𝚫' (delta) greek sign"
+    replace: "𝚫"
+
+  - triggers: ["gamma\t", "::gamma"]
+    label: "Provide a '𝛄' (gamma) greek sign"
+    replace: "𝛄"
 
   # Provide bullets and dashes
   - trigger: "dash\t"
@@ -71,6 +87,62 @@ matches:
   - trigger: "::lbul"
     label: "Provide a left pointing triangle bullet"
     replace: "◀"
+
+  # Provide french accentuated words
+  - triggers: ["cout\t", "::cout"]
+    label: "Provide 'coût'"
+    replace: "coût"
+    propagate_case: true
+
+  - trigger: "cout"
+    label: "Provide 'coût'"
+    replace: "coût"
+    propagate_case: true
+    word: true
+
+  - triggers: ["couts\t", "::couts"]
+    label: "Provide 'coûts'"
+    replace: "coûts"
+    propagate_case: true
+
+  - trigger: "couts"
+    label: "Provide 'coûts'"
+    replace: "coûts"
+    propagate_case: true
+    word: true
+
+  - triggers: ["francais\t", "::francais"]
+    label: "Provide 'français'"
+    replace: "français"
+    propagate_case: true
+
+  - trigger: "francais"
+    label: "Provide 'français'"
+    replace: "français"
+    propagate_case: true
+    word: true
+
+  - triggers: ["meme\t", "::meme"]
+    label: "Provide 'même'"
+    replace: "même"
+    propagate_case: true
+
+  - trigger: "meme"
+    label: "Provide 'même'"
+    replace: "même"
+    propagate_case: true
+    word: true
+
+  - triggers: ["reponse\t", "::reponse"]
+    label: "Provide 'réponse'"
+    replace: "réponse"
+    propagate_case: true
+
+  - trigger: "reponse"
+    label: "Provide 'réponse'"
+    replace: "réponse"
+    propagate_case: true
+    word: true
 
   # Provide currency symbols
   - triggers: ["eur\t", "::eur"]
@@ -178,6 +250,14 @@ matches:
     label: "Provide a 'thumb down' emoji"
     replace: "👎"
 
+  - triggers: ["happy\t", "::happy", ":)\t", ":-)\t"]
+    label: "Provide a 'happy face' emoji"
+    replace: "😄"
+
+  - triggers: ["sad\t", "::sad", ":(\t", ":-(\t"]
+    label: "Provide a 'sad face' emoji"
+    replace: "😞"
+
   # But matches can also be dynamic:
   # Print the current date
   - triggers: ["date\t", "::date"]
@@ -225,8 +305,19 @@ matches:
     replace: "Hello,\nThank you for your message, "
     label: "Provide a 'thank you for your message' for email communications"
 
+  # Print "Hello Thank you" greetings for email communications
+  - triggers: ["thpt\t", "::thpt"]
+    replace: "Thank you for your input"
+    propagate_case: true
+    label: "Provide a 'thank you for your input' for email communications"
+
+  - triggers: ["ths\t", "::ths"]
+    replace: "Thank you.\nSincerely,"
+    propagate_case: true
+    label: "Provide a 'Thank you,\nSincerely' for email communications"
+
   # Provide a list of greetings for email communications
-  - triggers: ["th\t", "::th"]
+  - triggers: ["th*\t", "::th*"]
     label: "Provide ending salutations for email communications"
     replace: "{{greetingsList.greetings}}"
     vars:
@@ -260,7 +351,25 @@ matches:
               values:
                 - é
                 - è
+                - ê
                 - à
                 - ù
                 - ç
                 - ï
+
+  # Provide a list Vue.js snippets
+  - trigger: "::vrouter"
+    label: "Provide a standard import of the Vue Router"
+    replace: "import { useRouter } from 'vue-router';\nconst router = useRouter();"
+
+  - trigger: "::vstore"
+    label: "Provide a standard import of the Vue userStore"
+    replace: "import { useUserStore } from '../../stores/UserStore.js';\nconst userStore = useUserStore();"
+
+  - trigger: "::vimport"
+    label: "Provide a standard import of the Vue reactivity"
+    replace: "import {\nref,\nreactive,\ncomputed,\nwatch,\nonBeforeMount,\nonMounted,\nonBeforeUpdate,\nonUpdated,\nonBeforeUnmount,\nonUnmounted\n} from 'vue';"
+
+  - trigger: "::vwatch"
+    label: "Provide a standard watcher syntax of Vue"
+    replace: "watch(objToWatch, (newValue, oldValue) => {\n  // fires on nested property mutations\n});"
