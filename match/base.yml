@@ -34,6 +34,31 @@ matches:
     label: "Provide a left & right pointing arrow"
     replace: "⟷"
 
+  - triggers: ["arrow\t", "::arrow"]
+    label: "Provide a list of arrows"
+    replace: "{{arrowList.arrow}}"
+    vars:
+      - name: "arrowList"
+        type: form
+        params:
+          layout: "[[arrow]]"
+          fields:
+            arrow:
+              type: list
+              default: →
+              values:
+                - →
+                - ←
+                - ↓
+                - ↑
+                - ⟷
+                - ↖
+                - ↗
+                - ↘
+                - ↙
+                - ↪
+                - ↩
+
   # Provide specific signs
   - triggers: ["diff\t", "::diff", "inqu\t", "::inqu"]
     label: "Provide an inequality math sign"
@@ -87,6 +112,11 @@ matches:
   - trigger: "::lbul"
     label: "Provide a left pointing triangle bullet"
     replace: "◀"
+
+  # Correct the most common english mistakes
+  - trigger: ".lenght"
+    label: "Provide '.length'"
+    replace: ".length"
 
   # Provide french accentuated words
   - triggers: ["cout\t", "::cout"]
@@ -190,7 +220,6 @@ matches:
     replace: "Ξ"
 
   # Provide emoji color dots such as 🔴, 🟠, 🟡, 🟢 etc.
-
   - triggers: ["red\t", "::red"]
     label: "Provide a 'red dot' emoji"
     replace: "\U0001F534"
@@ -229,7 +258,6 @@ matches:
     replace: "\U000026AA"
 
   # Provide emoji status
-
   - triggers: ["warn\t", "::warn", "warning\t", "::warning"]
     label: "Provide a 'triangular warning sign' emoji"
     replace: "⚠"
@@ -279,17 +307,6 @@ matches:
           cmd: "echo 'Hello from your shell'"
 
   # And much more! For more information, visit the docs: https://espanso.org/docs/
-  # Custom commands created for Clément
-  # Print my full name
-  - triggers: ["name\t", "::name"]
-    replace: "Clément CHAÏB-GALLI"
-    label: "Provide the full name with acccents"
-
-  # Print "Hello Pro." greetings for email communications
-  - triggers: ["hp\t", "::hp"]
-    replace: "Hello,\nI am Clément from Rhenus Air & Ocean Tender management team, based in Hilden, Germany. I hope this message finds you well.\nI am contacting you because "
-    label: "Provide a professional introduction for email communications"
-
   # Print "Hello Simple" greetings for email communications
   - triggers: ["hs\t", "::hs"]
     replace: "Hello,\nI hope this message finds you well.\nI am contacting you because "
