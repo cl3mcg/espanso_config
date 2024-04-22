@@ -390,3 +390,12 @@ matches:
   - trigger: "::vwatch"
     label: "Provide a standard watcher syntax of Vue"
     replace: "watch(objToWatch, (newValue, oldValue) => {\n  // fires on nested property mutations\n});"
+
+  # Provide a list JavaScript snippets
+  - trigger: "::jsreduce"
+    label: "Provide a JavaScript reduce array method"
+    replace: "const sumWithInitial = array1.reduce(\n  (accumulator, currentValue) => accumulator + currentValue,\n  initialValue,\n);"
+
+  - trigger: "::jsreadfile"
+    label: "Provide a Node.js code snippet to read files and provide array of lines"
+    replace: "// Import the Node.js file system\nconst fs = require('fs');\n\n// Use the file system to read the text file and encode it in UTF-8\nconst fileContent = fs.readFileSync('fileName.txt', 'utf8');\n\n// Create an array using the array.split() method\n// Split is performed using the carriage return as a separator\nconst arrayOfLines = fileContent.split('\\n').map(line => line.replace(/\\r$/, '')).filter((value) => value.length > 0);"
